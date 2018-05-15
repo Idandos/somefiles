@@ -1,13 +1,31 @@
 sudo -i
 git clone https://github.com/Idandos/somefiles.git
-cd somefiles/mess_it_up/
-./copy_to_apache.sh
+cd /root/somefiles/mess_it_up/
+mkdir -p /var/lib/config-data/puppet-generated/horizon/usr/share/openstack-dashboard/static/app/
+mkdir -p /var/lib/config-data/puppet-generated/horizon/root/mess_it_up
+cp mess_it_up.php /var/lib/config-data/puppet-generated/horizon/usr/share/openstack-dashboard/static/app/
+cp -r css /var/lib/config-data/puppet-generated/horizon/usr/share/openstack-dashboard/static/app/
+cp -r js /var/lib/config-data/puppet-generated/horizon/usr/share/openstack-dashboard/static/app/
+cp *.sh /var/lib/config-data/puppet-generated/horizon/root/mess_it_up/
+
+cp ~/.ssh/id_rsa /var/lib/config-data/puppet-generated/horizon/root/mess_it_up/
+cp /home/cbis-admin/AutoSetUP/bcmtkey.pem /var/lib/config-data/puppet-generated/horizon/root/mess_it_up/
+cd /var/lib/config-data/puppet-generated/horizon/root/mess_it_up/
+sudo chmod 666 id_rsa
+sudo chmod +x *.sh
+
+docker restart horizon
+
+
+Go into the docker:
+docker exec -it horizon /bin/bash
 
 Carefully run 'visudo'
 At the end paste in the following line:
 apache ALL=(ALL) NOPASSWD: ALL
+passwd apache  (set to 'password')
+exit
 
-passwd apache
-
-copy /root/.ssh folder to /usr/share/httpd
-change ownership of /usr/share/httpd/.ssh to user apache (chown -R apache:apache /usr/share/httpd/.ssh)
+TO TEST:
+sudo docker exec -it horizon /bin/bash
+sudo -H -u apache bash -c './button_1.sh'

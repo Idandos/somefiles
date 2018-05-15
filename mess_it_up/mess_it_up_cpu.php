@@ -58,8 +58,9 @@
     <div align="center" class="container-narrow">
       <div align="left" class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="http://10.5.154.100/dashboard/project/vitrageentities/" target="a">Vitrage</a></li>
-          <li class="active"><a href="http://10.5.154.100/zabbix" target="b">Zabbix</a></li>
+          <li class="active"><a href="http://10.5.132.100/dashboard/project/vitrageentities/" target="a">Vitrage</a></li>
+          <li class="active"><a href="http://10.5.132.100/zabbix" target="b">Zabbix</a></li>
+          <li class="active"><a href="http://10.5.132.42:30502/" target="b">Prometheus</a></li>
         </ul>
         <h3 class="muted">Vitrage Demo</h3>
       </div>
@@ -78,11 +79,11 @@
       <div class="row-fluid marketing">
         <div class="span6" style="width: 100%;">
           <h3>Compute - 0:</h3>
-          <h4>Mess up interfaces</h4>
+          <h4>Mess up host</h4>
           <form method="post">
 <br>
-            <p><button name="a1" class="btn btn-danger">Interfaces Down</button></p>
-            <p><button name="a3" class="btn btn-success">Interfaces Up</button></p>
+            <p><button name="a1" class="btn btn-danger">Create CPU Load</button></p>
+            <p><button name="a3" class="btn btn-success">Stop CPU Load</button></p>
           </form>
         </div>
 
