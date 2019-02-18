@@ -1,7 +1,10 @@
 == Disable ipv6 ==
 # From https://www.linuxbabe.com/ubuntu/disable-ipv6-on-ubuntu
-sudo vi /etc/apt/apt.conf.d/99force-ipv4  # Insert the following line:
-Acquire::ForceIPv4 "true";
+sudo vim /etc/gai.conf  # uncomment 'precedence ::ffff:0:0/96  100'
+# this may be not needed:
+# sudo vi /etc/apt/apt.conf.d/99force-ipv4  # Insert the following line:
+# Acquire::ForceIPv4 "true";
+
 
 == Configure user ==
 sudo vi /etc/sudoers  # Insert the following text: ubuntu   ALL=(ALL) NOPASSWD:ALL
